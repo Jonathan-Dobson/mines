@@ -8,29 +8,113 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  /* color: white; */
 }
 
 .App-link {
   color: #61dafb;
 }
 
-.Container {
-  display: grid;
-  grid-template-columns: repeat(3, 60px);
-  grid-template-rows: repeat(3, 60px);
-}
+
 
 .Cell {
-  background-color: #aaa;
+  background-color: #999;
   width: 50px;
   height: 50px;
   border-radius: 2px;
-  transition: background-color ease-out 200ms;
+  transition: all ease-out 50ms;
 }
 
 .Cell:hover {
   background-color: #ddd;
+}
+
+.Cell:active {
+  background-color: #edd;
+  box-shadow: inset 0px 1px 4px black;
+}
+
+.Cell-Open {
+  background-color: #eee;
+
+}
+
+.Flag-Container {
+  display: flex;
+  padding: 4px;
+  justify-content: center;
+  transition: transform linear 50ms;
+}
+
+.Flag-Container:active {
+  transform: scale(0.9);
+}
+
+.Flag-Pole {
+  background-color: black;
+  width: 4px;
+  height: 42px;
+}
+
+.Flag-Area {
+  display: flex;
+  flex-direction: column;
+}
+
+.Flag-Triangle {
+  margin-top: 1px;
+  border-top: 10px solid transparent;
+  border-left: 26px solid black;
+  border-bottom: 12px solid transparent;
+}
+
+.Flag-Maybe {
+  padding-left: 6px;
+  font-size: larger;
+}
+
+
+.Mine-Container {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Mine-Circle {
+  /* background-color: black; */
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.Mine-Spike {
+  background-color: black;
+  border-radius: 4px;
+  position: relative;
+  top: -5px;
+  left: 4px;
+  width: 4px;
+  height: 34px;
+}
+
+.rotate-60 {
+  transform: rotate(60deg);
+  left: 0;
+}
+
+.rotate-120 {
+  transform: rotate(120deg);
+  left: -4px;
+}
+
+.Cell-Number {
+  display: block;
+  text-align: center;
+  font-size: 250%
 }
