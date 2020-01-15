@@ -5,7 +5,7 @@ import Mine from './Mine'
 const Cell = ({open, flag, maybe, mine, exploded, position, flagIt, openIt}) => {
     const CellTypes = [ 
         'Cell' ,
-        open && 'Cell-Open',
+        open!==false && 'Cell-Open',
         flag && 'Cell-Flag'
     ].join(' ')
 
@@ -26,7 +26,7 @@ const Cell = ({open, flag, maybe, mine, exploded, position, flagIt, openIt}) => 
         <span className={CellTypes} 
             onClick={(event)=>handleClick({event,position})} 
             onContextMenu={(event)=>handleClick({event,position})} >
-                <b className="Cell-Number">{open && open}</b>
+                <b className="Cell-Number">{open>0 && open}</b>
                 {flag && <Flag />}
                 {maybe && <Flag maybe />}
                 {mine && <Mine exploded={exploded?true:false}/>}

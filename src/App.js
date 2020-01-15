@@ -15,7 +15,8 @@ function App() {
   const startGame = (settings) => {
     const Minefield = generateMinefield(settings)
     setState({
-      ...state, 
+      ...state,
+      settings: settings, 
       gameOn: true,
       gameOver: false, 
       minefield: Minefield
@@ -58,13 +59,13 @@ function App() {
   }
   }
   
-  const openIt = (position) => {
+  const openIt = ({r,c}) => {
     let gameOver = state.gameOver
     if(!gameOver && state.gameOn ){
 
 
     const oldField = [...state.minefield]
-    const oldCell = oldField[position.r][position.c]
+    const oldCell = oldField[r][c]
     let newCell = oldCell
 
     console.log(oldCell);
@@ -81,6 +82,13 @@ function App() {
         hasMine: true
       }
       gameOver = true
+      oldField[r][c] = newCell
+      setState({
+        ...state,
+        gameOver: gameOver,
+        gameOn: !gameOver,
+        minefield: oldField
+      })
     }
 
     else if(oldCell.open){
@@ -89,19 +97,54 @@ function App() {
 
     else {
       console.log('opening cell');
+
+      console.log('count adjacent mines');
+      
+      let adjacentCellPositions = [
+        [r-1,c], 
+        [r-1,c+1], 
+        [r,c+1], 
+        [r+1,c+1], 
+        [r+1,c], 
+        [r+1,c-1], 
+        [r,c-1], 
+        [r-1,c-1]
+      ]
+      let max=state.settings.size
+      let adjacentMineCount = adjacentCellPositions.reduce((acc,[r,c])=>{
+        if(r>=0 && r<max && c>=0 && c<max){
+          return acc + (state.minefield[r][c].hasMine?1:0)
+        }
+        return acc
+      },0)
+
       newCell = {
         ...oldCell,
-        open: true
+        open: adjacentMineCount
       }
+      oldField[r][c] = newCell
+      setState({
+        ...state,
+        gameOver: gameOver,
+        gameOn: !gameOver,
+        minefield: oldField
+      })
+
+      if(adjacentMineCount===0){
+        adjacentCellPositions.forEach(([r,c])=>{
+          console.log("r,c",r,c);
+          if(r>=0 && r<max && c>=0 && c<max){
+            if(state.minefield[r][c].open===false && state.minefield[r][c].open!==0){
+              openIt({r:r,c:c})
+            }
+          }
+        })
+      }
+
+
     }
 
-    oldField[position.r][position.c] = newCell
-    setState({
-      ...state,
-      gameOver: gameOver,
-      gameOn: !gameOver,
-      minefield: oldField
-    })
+
   }
 
   }
