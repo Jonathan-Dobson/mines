@@ -10,7 +10,7 @@ const ActionBar = ({startGame, gameOn}) => {
                 {/* <div>Time: 00:00</div> */}
                 {/* <div>Mines: 0/10</div> */}
             </div>
-            <button onClick={()=>startGame({size:8,mines:3})}>{startText}</button>
+            <button onClick={()=>startGame({size:8,mines:8})}>{startText}</button>
             {/* <button>Change Difficulty</button> */}
             {/* <button>Pause</button> */}
         </div>

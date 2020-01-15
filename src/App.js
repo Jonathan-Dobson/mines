@@ -60,6 +60,37 @@ function App() {
   }
   
   const openIt = ({r,c}) => {
+    let adjacentCellPositions = [
+      [r-1,c], 
+      [r-1,c+1], 
+      [r,c+1], 
+      [r+1,c+1], 
+      [r+1,c], 
+      [r+1,c-1], 
+      [r,c-1], 
+      [r-1,c-1]
+    ]
+
+    let max=state.settings.size
+    
+    console.log('count adjacent mines')
+    let adjacentMineCount = adjacentCellPositions.reduce((acc,[r,c])=>{
+      if(r>=0 && r<max && c>=0 && c<max){
+        return acc + (state.minefield[r][c].hasMine?1:0)
+      }
+      return acc
+    },0)
+
+    console.log('count adjacent flags')
+    let adjacentFlagCount = adjacentCellPositions.reduce((acc,[r,c])=>{
+      if(r>=0 && r<max && c>=0 && c<max){
+        return acc + (state.minefield[r][c].flag?1:0)
+      }
+      return acc
+    },0)
+
+    console.log('flag count',adjacentFlagCount);
+
     let gameOver = state.gameOver
     if(!gameOver && state.gameOn ){
 
@@ -67,8 +98,6 @@ function App() {
     const oldField = [...state.minefield]
     const oldCell = oldField[r][c]
     let newCell = oldCell
-
-    console.log(oldCell);
 
     if(oldCell.flag){
       console.log('cannot open. has flag');
@@ -91,32 +120,12 @@ function App() {
       })
     }
 
-    else if(oldCell.open){
+    else if(oldCell.open && adjacentFlagCount<adjacentMineCount){
       console.log('this cell is already open');
     }
 
     else {
       console.log('opening cell');
-
-      console.log('count adjacent mines');
-      
-      let adjacentCellPositions = [
-        [r-1,c], 
-        [r-1,c+1], 
-        [r,c+1], 
-        [r+1,c+1], 
-        [r+1,c], 
-        [r+1,c-1], 
-        [r,c-1], 
-        [r-1,c-1]
-      ]
-      let max=state.settings.size
-      let adjacentMineCount = adjacentCellPositions.reduce((acc,[r,c])=>{
-        if(r>=0 && r<max && c>=0 && c<max){
-          return acc + (state.minefield[r][c].hasMine?1:0)
-        }
-        return acc
-      },0)
 
       newCell = {
         ...oldCell,
@@ -129,12 +138,11 @@ function App() {
         gameOn: !gameOver,
         minefield: oldField
       })
-
-      if(adjacentMineCount===0){
+console.log('mine count',adjacentMineCount);
+      if(adjacentMineCount<=adjacentFlagCount){
         adjacentCellPositions.forEach(([r,c])=>{
-          console.log("r,c",r,c);
           if(r>=0 && r<max && c>=0 && c<max){
-            if(state.minefield[r][c].open===false && state.minefield[r][c].open!==0){
+            if(state.minefield[r][c].open===false){
               openIt({r:r,c:c})
             }
           }
@@ -163,7 +171,7 @@ function App() {
                 position = {{r:vi,c:ci}}
                 flagIt = {flagIt}
                 openIt = {openIt}
-                flag = {state.minefield[vi][ci].flag}
+                flag = {(state.minefield[vi][ci].hasMine && state.gameOver)?false:state.minefield[vi][ci].flag}
                 maybe = {state.minefield[vi][ci].maybe}
                 open = {state.minefield[vi][ci].open}
                 mine = {(
