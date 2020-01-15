@@ -2,7 +2,7 @@ import React from 'react'
 import Flag from './Flag'
 import Mine from './Mine'
 
-const Cell = ({open, flag, maybe, mine, exploded, position, flagIt}) => {
+const Cell = ({open, flag, maybe, mine, exploded, position, flagIt, openIt}) => {
     const CellTypes = [ 
         'Cell' ,
         open && 'Cell-Open',
@@ -10,10 +10,13 @@ const Cell = ({open, flag, maybe, mine, exploded, position, flagIt}) => {
     ].join(' ')
 
     const handleClick = (props) => {
+
         props.event.preventDefault()
         if(props.event.type==='contextmenu'){
             flagIt(props.position)
-            console.log('flag it');
+        }
+        if(props.event.type==='click'){
+            openIt(props.position)
         }
 
     }
@@ -27,7 +30,7 @@ const Cell = ({open, flag, maybe, mine, exploded, position, flagIt}) => {
                 {flag && <Flag />}
                 {maybe && <Flag maybe />}
                 {mine && <Mine exploded={exploded?true:false}/>}
-                {position.r},{position.c}
+                {/* {position.r},{position.c} */}
         </span>
     )
 }

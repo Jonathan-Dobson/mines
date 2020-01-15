@@ -11,7 +11,8 @@ export default function generateMinefield({size, mines}){
                 rows[r][c] = {
                     flag: false,
                     maybe: false, 
-                    hasMine: false
+                    hasMine: false,
+                    open: false
                 }
         }
     }
