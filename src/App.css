@@ -12,6 +12,7 @@
   justify-content: center;
   align-items: center;
   /* color: white; */
+  cursor: default;
 }
 
 .App-link {
@@ -26,7 +27,8 @@
   height: 50px;
   border-radius: 2px;
   transition: all ease-out 50ms;
-}
+  
+}cursor: crosshair;
 
 .Cell:hover {
   background-color: #ddd;
