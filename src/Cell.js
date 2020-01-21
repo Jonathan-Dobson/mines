@@ -2,7 +2,7 @@ import React from 'react'
 import Flag from './Flag'
 import Mine from './Mine'
 
-const Cell = ({open, flag, maybe, mine, exploded, position, flagIt, openIt, countFlags}) => {
+const Cell = ({open, flag, maybe, mine, exploded, position, flagIt, openIt, countFlags, countOpen}) => {
     const CellTypes = [ 
         'Cell' ,
         open!==false && 'Cell-Open',
@@ -18,6 +18,7 @@ const Cell = ({open, flag, maybe, mine, exploded, position, flagIt, openIt, coun
             if(props.event.type==='click'){
                 openIt(props.position)
             }
+            
             resolve()
         })    
     }
@@ -29,7 +30,7 @@ const Cell = ({open, flag, maybe, mine, exploded, position, flagIt, openIt, coun
         updateBoard(props).then(()=>{
             // console.log("2",new Date().getMilliseconds());
             countFlags()
-
+            countOpen()
     
         })
         // console.log("3",new Date().getMilliseconds())

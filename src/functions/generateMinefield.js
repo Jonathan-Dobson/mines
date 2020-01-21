@@ -2,7 +2,6 @@
 export default function generateMinefield({size, mines}){
 
     // Create Minefield
-
     let rows = []
     for( let r=0 ; r < size ; r++ ){
         rows.push([])

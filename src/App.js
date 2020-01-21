@@ -165,21 +165,38 @@ function App() {
         }
 
     }
+    const countOpen = () => {
+        if(!state.gameOver){
+
+            const totalOpen = state.minefield.reduce((racc, row)=>{
+                return racc + row.reduce((cacc, v)=>{
+                    return (v.open===false?0:1) + cacc
+                },0)
+            },0)
+            console.log('total open', totalOpen);
+        }
+    }
+    
 
     const countFlags = () => {
+      if(!state.gameOver){
+
         const totalFlags = state
-            .minefield
-            .reduce((racc, row) => {
-                return racc + row.reduce((cacc, v) => {
-                    return cacc + v.flag
-                        ? 1
-                        : 0
-                }, 0)
-            }, 0)
-        setState({
-            ...state,
-            totalFlags: totalFlags
-        })
+        .minefield
+        .reduce((racc, row) => {
+          return racc + row.reduce((cacc, v) => {
+            //   console.log("flag ",v.flag);
+            return (v.flag
+                ? 1
+                : 0) + cacc
+          }, 0)
+        }, 0)
+        // console.log(totalFlags);
+        // setState({
+        //   ...state,
+        //   totalFlags: totalFlags
+        // })
+      }
     }
 
     return (
@@ -218,8 +235,8 @@ function App() {
                         open={state.minefield[vi][ci].open}
                         mine={(state.minefield[vi][ci].hasMine && state.minefield[vi][ci].open) || (state.gameOver && state.minefield[vi][ci].hasMine) ? true : false}
                         exploded={state.minefield[vi][ci].hasMine && state.minefield[vi][ci].open}
+                        countOpen={countOpen}
                         countFlags={countFlags}/>))}
-
                 {/* <Cell />
         <Cell />
         <Cell open />
