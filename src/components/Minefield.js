@@ -1,17 +1,13 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Cell from './gameParts/Cell'
-import { GameContext } from '../GameProvider'
-import generateMinefield from '../functions/generateMinefield'
+import { SettingsContext } from '../context/SettingsProvider'
+import { GameStatusContext } from '../context/GameStatusProvider'
+import { MinefieldContext } from '../context/MinefieldProvider'
 
-export default function Minefield ({size,mines}) {
-    const {
-        minefield:[minefield,setMinefield],
-        gameStatus:[gameStatus]
-    } = useContext(GameContext)
-
-    useEffect(()=>{
-        setMinefield(generateMinefield({size,mines}))
-    },[])
+export default function Minefield () {
+    const {size} = useContext(SettingsContext)
+    const {gameStatus} = useContext(GameStatusContext)
+    const {minefield} = useContext(MinefieldContext)
 
     return (
         <div style={{
