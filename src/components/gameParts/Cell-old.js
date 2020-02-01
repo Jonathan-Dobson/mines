@@ -23,21 +23,14 @@ const Cell = ({open, flag, maybe, mine, exploded, position, flagIt, openIt, coun
         })    
     }
 
-    
-
     const handleClick = (props) => {
-        // console.log("1",new Date().getMilliseconds())
         updateBoard(props).then(()=>{
-            // console.log("2",new Date().getMilliseconds());
             countFlags()
             countOpen()
     
         })
-        // console.log("3",new Date().getMilliseconds())
-
 
     }
-    
 
     return (
         <span className={CellTypes} 

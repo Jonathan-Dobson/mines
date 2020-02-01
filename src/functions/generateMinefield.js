@@ -1,5 +1,6 @@
-
 export default function generateMinefield({size, mines}){
+    // size = (size squared) number of cells to create
+    // mines = number of mines to plant
 
     // Create Minefield
     let rows = []
@@ -7,12 +8,14 @@ export default function generateMinefield({size, mines}){
         rows.push([])
         for( let c=0 ; c < size ; c++){
             rows[r].push([])
-                rows[r][c] = {
-                    flag: false,
-                    maybe: false, 
-                    hasMine: false,
-                    open: false
-                }
+            rows[r][c] = {
+                // initial cell default properties
+                // open: false,
+                // flag: false,
+                // maybe: false, 
+                status: "closed",
+                hasMine: false,
+            }
         }
     }
 
@@ -20,8 +23,13 @@ export default function generateMinefield({size, mines}){
     for( let i=0 ; i < mines ; i++){
         let randomRow = Math.floor(Math.random()*size)
         let randomCol = Math.floor(Math.random()*size)
-        if(rows[randomRow][randomCol].hasMine){i--} // invalidate duplicates
-        rows[randomRow][randomCol] = {...rows[randomRow][randomCol], hasMine: true};
+        // invalidate duplicates
+        if(rows[randomRow][randomCol].hasMine){i--} 
+        // insert mine
+        rows[randomRow][randomCol] = {
+            ...rows[randomRow][randomCol], 
+            hasMine: true
+        };
     }
     return rows
 }

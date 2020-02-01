@@ -2,6 +2,7 @@
 *{
   box-sizing: border-box;
   margin: 0;
+  user-select: none;
 }
 
 .App {
@@ -11,24 +12,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* color: white; */
   cursor: default;
+  color: red;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-
-
+/* Cell */
 .Cell {
   background-color: #999;
   width: 50px;
   height: 50px;
   border-radius: 2px;
   transition: all ease-out 50ms;
-  
-}cursor: crosshair;
+}
 
 .Cell:hover {
   background-color: #ddd;
@@ -41,9 +40,9 @@
 
 .Cell-Open {
   background-color: #eee;
-
 }
 
+/* Flag */
 .Flag-Container {
   display: flex;
   padding: 4px;
@@ -78,7 +77,7 @@
   font-size: larger;
 }
 
-
+/* Mine */
 .Mine-Container {
   display: flex;
   height: 50px;
@@ -87,7 +86,7 @@
 }
 
 .Mine-Circle {
-  /* background-color: black; */
+  background-color: black;
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -115,8 +114,20 @@
   left: -4px;
 }
 
+.Exploded {
+  background-color: red;
+}
+
+/* More */
 .Cell-Number {
   display: block;
   text-align: center;
-  font-size: 250%
+  font-size: 270%;
+  color: black;
+  font-weight: bold;
 }
+
+.Footer {
+  color: #eee;
+}
+
