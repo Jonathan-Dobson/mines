@@ -203,6 +203,7 @@ function App() {
         }}>
             <h1
                 style={{
+  position: relative;
                 position: 'absolute',
                 top: 30,
                 color: '#e00'
@@ -250,4 +251,4 @@ function App() {
     );
 }
 
-export default App;
+export default App

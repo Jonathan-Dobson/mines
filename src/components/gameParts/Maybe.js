@@ -1,9 +1,9 @@
 import React from 'react'
 import Div from '../Div'
 
-const Flag = ({maybe}) => {
+const Maybe = ({handleClicks}) => {
     return (
-        <Div Cell>
+        <Div Cell {...handleClicks}>
             <div className="Flag-Container">
                 <div className="Flag-Pole"></div>
                 <div className="Flag-Area">
@@ -15,4 +15,4 @@ const Flag = ({maybe}) => {
     )
 }
 
-export default Flag
+export default Maybe

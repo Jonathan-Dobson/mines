@@ -9,7 +9,7 @@ export default function App() {
     return (
         <Div App>
             <ControlPanel />
-            <Minefield size={4} mines={8} />
+            <Minefield />
             <Footer />
         </Div>
     );

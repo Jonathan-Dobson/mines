@@ -13,7 +13,7 @@ export default function generateMinefield({size, mines}){
                 // open: false,
                 // flag: false,
                 // maybe: false, 
-                status: "closed",
+                cellState: "closed",
                 hasMine: false,
             }
         }

@@ -1,8 +1,9 @@
 export default function classes(props) {
     let classes = ""
     for(let item in props){
-        if(item!=="children" && item!=="style"){classes += " " + item}
+        if(typeof props[item]==='boolean' && item!=='children'){
+            classes += item + " "
+        }
     }
-    return classes
+    return classes.slice(0,classes.length-1)
 };
-

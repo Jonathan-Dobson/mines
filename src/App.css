@@ -21,7 +21,7 @@
 }
 
 /* Cell */
-.Cell {
+.Cell, .Cell-Open {
   background-color: #999;
   width: 50px;
   height: 50px;
@@ -30,12 +30,12 @@
 }
 
 .Cell:hover {
-  background-color: #ddd;
+  background-color: #aaa;
 }
 
 .Cell:active {
-  background-color: #edd;
-  box-shadow: inset 0px 1px 4px black;
+  background-color: #bbb;
+  box-shadow: inset 0px 0px 3px black;
 }
 
 .Cell-Open {
@@ -48,10 +48,12 @@
   padding: 4px;
   justify-content: center;
   transition: transform linear 50ms;
+  transform: scale(0.8);
 }
 
 .Flag-Container:active {
-  transform: scale(0.9);
+  transform: scale(0.74);
+
 }
 
 .Flag-Pole {
@@ -68,13 +70,16 @@
 .Flag-Triangle {
   margin-top: 1px;
   border-top: 10px solid transparent;
-  border-left: 26px solid black;
+  border-left: 26px solid #022;
   border-bottom: 12px solid transparent;
 }
 
 .Flag-Maybe {
-  padding-left: 6px;
-  font-size: larger;
+  padding-left: 12px;
+  margin-top: -10px;
+  font-size: 200%;
+  color: black;
+  font-weight: bolder;
 }
 
 /* Mine */
@@ -131,3 +136,37 @@
   color: #eee;
 }
 
+.GameOver {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  padding: 50px;
+  background-color: rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.GameOverBar {
+  color: orangered;
+  font-size: 130%;
+  background: rgba(0,0,255,0.8);
+  padding: 20px;
+  font-weight: bolder;
+  border-radius: 10px;
+  box-shadow: -3px 10px 36px 14px black;
+}
+
+.GameOverText {
+  text-align: center;
+}
+
+.GameOverButton {
+  text-align: center;
+}
+
+.GameOverButton > button {
+  width: 80%;
+}

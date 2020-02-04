@@ -1,12 +1,10 @@
 import React, { useContext } from 'react'
-import Cell from './gameParts/Cell'
+import Cell from './Cell'
 import { SettingsContext } from '../context/SettingsProvider'
-import { GameStatusContext } from '../context/GameStatusProvider'
 import { MinefieldContext } from '../context/MinefieldProvider'
 
 export default function Minefield () {
     const {size} = useContext(SettingsContext)
-    const {gameStatus} = useContext(GameStatusContext)
     const {minefield} = useContext(MinefieldContext)
 
     return (
@@ -20,11 +18,9 @@ export default function Minefield () {
                 .map((row,rownum)=>
                     row.map((cell,colnum)=>
                         <Cell {...{
-                            gameStatus,
+                            key: `${rownum.toString()} ${colnum.toString()}`,
+                            position: {colnum, rownum},
                             cell,
-                            colnum,
-                            rownum,
-                            key: `${rownum.toString()} ${colnum.toString()}`
                         }}/>
                     )
                 )
