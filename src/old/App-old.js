@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import './App.css';
 import Cell from './Cell'
-import Container from './components/Minefield'
-import ActionBar from './ActionBar'
-import generateMinefield from './functions/generateMinefield'
+import Container from '../components/Minefield'
+import ActionBar from '../ActionBar'
+import generateMinefield from '../functions/generateMinefield'
 
 function App() {
     // const [game,setGame]=useState("off")

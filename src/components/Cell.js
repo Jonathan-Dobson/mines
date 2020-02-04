@@ -4,13 +4,13 @@ import Open from './gameParts/Open';
 import Flag from './gameParts/Flag';
 import Maybe from './gameParts/Maybe';
 import Exploded from './gameParts/Exploded';
-import { GameStatusContext } from '../context/GameStatusProvider'
-import { MinefieldContext } from '../context/MinefieldProvider'
+import { Context } from '../context/Provider'
 import handleClicks from '../functions/handleClicks';
 
 export default function Cell({position, cell: {cellState,hasMine}}){
-    const {gameStatus, setGameStatus} = useContext(GameStatusContext)
-    const {openIt, flagIt, maybeIt, clearIt} = useContext(MinefieldContext)
+    const { openIt, flagIt, maybeIt, clearIt, 
+        gameStatus:[gameStatus,setGameStatus]
+    } = useContext(Context)
     
     if(typeof cellState==='number'){
         return <Open 

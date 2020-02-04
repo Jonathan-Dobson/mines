@@ -1,14 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Div from './Div'
-import { SettingsContext } from '../context/SettingsProvider';
-import { MinefieldContext } from '../context/MinefieldProvider';
-import { GameStatusContext } from '../context/GameStatusProvider';
+import { Context } from '../context/Provider'
 import generateMinefield from '../functions/generateMinefield'
 
 export default function ControlPanel(){
-    const {size, mines} = useContext(SettingsContext)
-    const {setMinefield} = useContext(MinefieldContext)
-    const {gameStatus, setGameStatus} = useContext(GameStatusContext)
+    const { 
+        gameStatus: [gameStatus, setGameStatus],
+        settings: { size:[size], mines:[mines] }, 
+        setMinefield,
+    } = useContext(Context)
+
     const [gameOverAlert, setGameOverAlert] = useState()
 
     function handleStart(){
@@ -16,10 +17,6 @@ export default function ControlPanel(){
         setMinefield(generateMinefield({size,mines}))
         setGameStatus("on")
     }
-
-    // function handleGameOverOK(){
-    //     setGameOverAlert(false)
-    // }
 
     useEffect(() => {
         if(gameStatus==='lost'){
@@ -30,8 +27,6 @@ export default function ControlPanel(){
 
     return(
         <div style={{margin: 6}}>
-            
-                
                     <Div >
                         {gameOverAlert && 
                             <>

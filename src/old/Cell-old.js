@@ -1,6 +1,6 @@
 import React from 'react'
-import Flag from './components/gameParts/Flag'
-import Mine from './components/gameParts/Mine'
+import Flag from '../components/gameParts/Flag'
+import Mine from '../components/gameParts/Mine'
 
 const Cell = ({open, flag, maybe, mine, exploded, position, flagIt, openIt, countFlags, countOpen}) => {
     const CellTypes = [ 

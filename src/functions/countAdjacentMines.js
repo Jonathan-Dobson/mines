@@ -1,7 +1,9 @@
 import isWithinLimit from './isWithinLimit'
+import getAdjacentCellPositions from './getAdjacentCellPositions'
 
-export default (minefield , adjacentCellPositions) => 
-    adjacentCellPositions.reduce((acc, [r, c]) => {
+export default (minefield , r, c) => 
+    getAdjacentCellPositions(r,c)
+    .reduce((acc, [r, c]) => {
         if (isWithinLimit(r,c,minefield)) {
             return acc + (minefield[r][c].hasMine
                 ? 1

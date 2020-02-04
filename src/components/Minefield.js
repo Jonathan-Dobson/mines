@@ -1,18 +1,15 @@
 import React, { useContext } from 'react'
 import Cell from './Cell'
-import { SettingsContext } from '../context/SettingsProvider'
-import { MinefieldContext } from '../context/MinefieldProvider'
+import { Context } from '../context/Provider'
 
 export default function Minefield () {
-    const {size} = useContext(SettingsContext)
-    const {minefield} = useContext(MinefieldContext)
-
+    const { minefield } = useContext(Context)
     return (
         <div style={{
             display: 'grid',
             gridGap: 2,
-            gridTemplateColumns: `repeat(${size}, 50px)`,
-            gridTemplateRows: `repeat(${size}, 50px)`
+            gridTemplateColumns: `repeat(${minefield.length}, 50px)`,
+            gridTemplateRows: `repeat(${minefield.length}, 50px)`
         }}>
             {minefield
                 .map((row,rownum)=>

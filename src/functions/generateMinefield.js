@@ -9,10 +9,6 @@ export default function generateMinefield({size, mines}){
         for( let c=0 ; c < size ; c++){
             rows[r].push([])
             rows[r][c] = {
-                // initial cell default properties
-                // open: false,
-                // flag: false,
-                // maybe: false, 
                 cellState: "closed",
                 hasMine: false,
             }
@@ -25,7 +21,7 @@ export default function generateMinefield({size, mines}){
         let randomCol = Math.floor(Math.random()*size)
         // invalidate duplicates
         if(rows[randomRow][randomCol].hasMine){i--} 
-        // insert mine
+        // insert a mine
         rows[randomRow][randomCol] = {
             ...rows[randomRow][randomCol], 
             hasMine: true
