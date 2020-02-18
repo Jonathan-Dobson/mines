@@ -1,9 +1,9 @@
 import React from 'react'
 import Div from '../Div'
 
-const Flag = ({handleClicks}) => {
+const Flag = ({onClick,onRightClick}) => {
     return (
-        <Div Cell {...handleClicks}>
+        <Div Cell {...{onClick,onRightClick}}>
             <div className="Flag-Container">
                 <div className="Flag-Pole"></div>
                 <div className="Flag-Area">

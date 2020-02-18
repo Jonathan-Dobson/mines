@@ -1,18 +1,15 @@
 import autoOpenAll from '../autoOpenAll'
 
 export default function openIt(setMinefield) {
-    return function({rownum:r,colnum:c},setGame){
+    return function( {rownum:r, colnum:c}, setGame ){
         setMinefield(prev=>{
             let minefield = [...prev]
             let {cellState,hasMine} = minefield[r][c]
             if(cellState !== 'flag'){
-                if(hasMine){
-                    cellState = "exploded"
-                    setGame('lost')
-                }
-                else{
-                    cellState = autoOpenAll({r,c,minefield,openIt:openIt(setMinefield),setGame})
-                }
+                hasMine && setGame('lost')
+                cellState = hasMine 
+                    ? 'exploded' 
+                    : autoOpenAll({r,c,minefield,openIt:openIt(setMinefield),setGame})
             }
             minefield[r][c] = { hasMine, cellState }
             return minefield

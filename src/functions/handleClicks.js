@@ -1,10 +1,11 @@
 export default function handleClicks(left,right) {
     return {
-        onClick: (event)=>{ // left click
-            left()
+        onClick: (e)=>{
+            left(e)
         },
-        onContextMenu: (event)=>{// right click
-            right()
+        onRightClick: (e)=>{
+            e.preventDefault()
+            right(e)
         }
     }
 }

@@ -8,8 +8,8 @@ export default function SettingsProvider(props) {
     const value = { 
         gameStatus: useState('off'),
         settings: {
-            size: useState(5), 
-            mines: useState(3)
+            size: useState(7), 
+            mines: useState(9)
         },
         minefield,
         setMinefield,

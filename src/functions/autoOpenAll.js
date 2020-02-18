@@ -4,15 +4,12 @@ import countAdjacent from './countAdjacent'
 
 export default ({r,c,minefield,openIt,setGame}) => {
     let { mines, flags } = countAdjacent( minefield, r, c)
-    if ( mines <= flags ) {
+    mines <= flags &&
         getAdjacentCellPositions(r,c)
-        .forEach(([r, c]) => {
-            if (isWithinLimit(r,c,minefield)) {
-                if (minefield[r][c].cellState==='closed') {
-                    openIt({rownum:r, colnum: c},setGame)
-                }
-            }
-        })
-    }
+        .forEach(([r, c]) => 
+            isWithinLimit(r,c,minefield) && 
+            minefield[r][c].cellState === 'closed' && 
+            openIt({rownum:r, colnum: c},setGame)
+        )
     return mines
 };
