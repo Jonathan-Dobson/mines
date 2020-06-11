@@ -30,7 +30,9 @@ export default function ControlPanel(){
                     <Div >
                         {gameOverAlert && 
                             <>
-                            <Div GameOverText>Ouch! You hit a mine!<br/>Game Over</Div>
+                            <Div GameOverText>Ouch! You hit a mine!<br/>Game Over <br/> <button onClick={handleStart}>
+                    {gameStatus==='off'?'Start':gameStatus==='on'?'Start Over':'Play Again'}
+                </button></Div>
                             </>
                         }
                     </Div>

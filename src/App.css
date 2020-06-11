@@ -160,7 +160,7 @@
 }
 
 .GameOverText {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 4vw;
   position: absolute;
   text-align: center;

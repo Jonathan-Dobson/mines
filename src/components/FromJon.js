@@ -2,13 +2,12 @@ import React from 'react'
 
 export default () => <footer style={{
         textAlign: 'center',
-        margin: 'auto',
         margin: 20,
         color: '#999'
       }}>
         <span style={{
             display: 'inline-block',
-            maxWidth: 600
+            maxWidth: 400
         }}>
             <i>
                 This React Game was built to practice coding with hooks, context, and thunking functions.
