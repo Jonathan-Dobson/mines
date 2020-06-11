@@ -1,1 +1,1 @@
-Minesweeper game
+Minesweeper game. Still needs some more work. Needs code to count the remaining mines and determine the winner. I'll get to it when I find the time.

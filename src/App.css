@@ -160,7 +160,13 @@
 }
 
 .GameOverText {
+  background-color: black;
+  padding: 4vw;
+  position: absolute;
   text-align: center;
+  z-index: 12;
+  top: 30vh;
+  
 }
 
 .GameOverButton {

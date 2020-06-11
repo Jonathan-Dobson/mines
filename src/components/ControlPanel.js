@@ -30,8 +30,7 @@ export default function ControlPanel(){
                     <Div >
                         {gameOverAlert && 
                             <>
-                            <Div GameOverText>Ouch! You hit a mine!</Div>
-                            <Div GameOverText>Game Over</Div>
+                            <Div GameOverText>Ouch! You hit a mine!<br/>Game Over</Div>
                             </>
                         }
                     </Div>
