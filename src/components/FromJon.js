@@ -1,5 +1,8 @@
 import React from 'react'
 
+const Link = (props) => <a style = {{display: 'inline-block', color: '#999', textDecoration: 'none'}}
+    href = {props.href}>{props.children}</a>
+
 export default () => <footer style={{
         textAlign: 'center',
         margin: 20,
@@ -7,12 +10,13 @@ export default () => <footer style={{
       }}>
         <span style={{
             display: 'inline-block',
-            maxWidth: 400
+            maxWidth: 400,
         }}>
             <i>
                 This React Game was built to practice coding with hooks, context, and thunking functions.
             </i>        
-            <a style={{display: 'inline-block', padding: 10, color: '#999', textDecoration: 'none'}} 
-                href="https://fromjon.com"> Browse more apps at <u>  FromJon.com</u></a>
-        </span>
+            <Link href="https://fromjon.com"> Browse more apps at <u>FromJon.com</u></Link>
+            <Link href="">View this repository on <u>GitHub</u></Link>
+          
+          </span>
       </footer>
